@@ -46,30 +46,35 @@ A scalable backend system for managing and processing e-commerce orders with RES
 ```bash
 git clone git@github.com:gopalmani/order-mgmt-assignment.git
 cd ecommerce-order-system
-2. Create Virtual Environment
-bash
+```
+### 2. Create Virtual Environment
+```bash
 Copy
 python3 -m venv venv
 source venv/bin/activate  # Linux/Mac
 # OR
 venv\Scripts\activate  # Windows
-3. Install Dependencies
-bash
+```
+### 3. Install Dependencies
+```bash
 Copy
 pip install -r requirements.txt
-4. Initialize Database
-bash
+```
+### 4. Initialize Database
+```bash
 Copy
 python app.py  # Creates orders.db automatically
-5. Start the Server
-bash
+```
+### 5. Start the Server
+```bash
 Copy
 python app.py
 Server runs at http://localhost:5000
+```
 
 API Documentation 📚
 1. Create an Order
-bash
+```bash
 Copy
 curl -X POST http://localhost:5000/orders \
   -H "Content-Type: application/json" \
@@ -79,26 +84,29 @@ curl -X POST http://localhost:5000/orders \
     "item_ids": ["item_1", "item_2"],
     "total_amount": 150.99
   }'
+```
 Response:
-
+```
 json
 Copy
 {
   "order_id": "order_456",
   "status": "pending"
 }
+```
 2. Check Order Status
-bash
+```bash
 Copy
 curl http://localhost:5000/orders/order_456/status
 Response:
 
 json
-Copy
+```Copy
 {
   "order_id": "order_456",
   "status": "completed"
 }
+```
 3. Get Metrics
 bash
 Copy
