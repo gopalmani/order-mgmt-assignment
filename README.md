@@ -72,7 +72,7 @@ python app.py
 Server runs at http://localhost:5000
 ```
 
-API Documentation 📚
+## API Documentation 📚
 1. Create an Order
 ```bash
 Copy
@@ -108,12 +108,13 @@ json
 }
 ```
 3. Get Metrics
-bash
+```bash
 Copy
 curl http://localhost:5000/metrics
+```
 Response:
 
-json
+```json
 Copy
 {
   "total_orders": 42,
@@ -124,7 +125,8 @@ Copy
     "completed": 35
   }
 }
-Design Decisions 💡
+```
+## Design Decisions 💡
 Database Choice (SQLite)
 Why SQLite?
 
@@ -154,7 +156,7 @@ Worker Threads: Configurable via num_workers in QueueManager
 Concurrency: Flask runs in threaded mode (threaded=True)
 
 Database Schema 🔍
-sql
+```sql
 Copy
 CREATE TABLE orders (
   order_id TEXT PRIMARY KEY,
@@ -166,23 +168,24 @@ CREATE TABLE orders (
   started_at TIMESTAMP,
   completed_at TIMESTAMP
 );
+```
 Timestamps:
-
+```
 created_at: Order submission time
 
 started_at: Processing start time
 
 completed_at: Order completion time
-
-Load Testing ⚡
+```
+## Load Testing ⚡
 Simulate 1,000 concurrent orders:
 
-bash
+```bash
 Copy
 ./load_test.sh
 Sample Script (load_test.sh):
-
-bash
+```
+```bash
 Copy
 #!/bin/bash
 for i in {1..1000}; do
@@ -196,6 +199,7 @@ for i in {1..1000}; do
     }" &
 done
 wait
-License 📄
+```
+## License 📄
 MIT License - See LICENSE
 This provides everything a user needs to understand, run, and extend this service! 🎉
