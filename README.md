@@ -44,7 +44,7 @@ A scalable backend system for managing and processing e-commerce orders with RES
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/ecommerce-order-system.git
+git clone git@github.com:gopalmani/order-mgmt-assignment.git
 cd ecommerce-order-system
 2. Create Virtual Environment
 bash
@@ -190,18 +190,4 @@ done
 wait
 License 📄
 MIT License - See LICENSE
-
-Contribution: Feel free to open issues or PRs!
-Author: Your Name
-Contact: your.email@example.com
-
-Copy
-
----
-
-**How to Use This README**:
-1. Replace `yourusername`, `your.email@example.com`, etc.
-2. Add actual `requirements.txt` and `LICENSE` files
-3. Include `load_test.sh` in your repo
-
-This provides everything a user needs to understand, run, and extend your system! 🎉
+This provides everything a user needs to understand, run, and extend this service! 🎉
