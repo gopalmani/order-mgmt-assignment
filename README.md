@@ -174,8 +174,8 @@ Simulate 1,000 concurrent orders:
 
 ```bash
 ./load_test.sh
-Sample Script (load_test.sh):
 ```
+### Sample Script (load_test.sh):
 ```bash
 #!/bin/bash
 for i in {1..1000}; do
