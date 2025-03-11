@@ -49,7 +49,6 @@ cd ecommerce-order-system
 ```
 ### 2. Create Virtual Environment
 ```bash
-Copy
 python3 -m venv venv
 source venv/bin/activate  # Linux/Mac
 # OR
@@ -57,17 +56,14 @@ venv\Scripts\activate  # Windows
 ```
 ### 3. Install Dependencies
 ```bash
-Copy
 pip install -r requirements.txt
 ```
 ### 4. Initialize Database
 ```bash
-Copy
 python app.py  # Creates orders.db automatically
 ```
 ### 5. Start the Server
 ```bash
-Copy
 python app.py
 Server runs at http://localhost:5000
 ```
@@ -75,7 +71,6 @@ Server runs at http://localhost:5000
 ## API Documentation 📚
 1. Create an Order
 ```bash
-Copy
 curl -X POST http://localhost:5000/orders \
   -H "Content-Type: application/json" \
   -d '{
@@ -88,7 +83,6 @@ curl -X POST http://localhost:5000/orders \
 Response:
 ```
 json
-Copy
 {
   "order_id": "order_456",
   "status": "pending"
@@ -96,12 +90,11 @@ Copy
 ```
 2. Check Order Status
 ```bash
-Copy
 curl http://localhost:5000/orders/order_456/status
 Response:
 
 json
-```Copy
+```
 {
   "order_id": "order_456",
   "status": "completed"
@@ -109,13 +102,11 @@ json
 ```
 3. Get Metrics
 ```bash
-Copy
 curl http://localhost:5000/metrics
 ```
 Response:
 
 ```json
-Copy
 {
   "total_orders": 42,
   "average_processing_time": 0.5,
@@ -127,33 +118,34 @@ Copy
 }
 ```
 ## Design Decisions 💡
-Database Choice (SQLite)
-Why SQLite?
 
-Serverless & lightweight for rapid development
+### Database Choice (SQLite)
+#### Why SQLite?
 
-ACID-compliant with transaction support
+> Serverless & lightweight for rapid development
 
-Single-file storage simplifies deployment
+> ACID-compliant with transaction support
 
-Trade-off: Not ideal for distributed systems (use PostgreSQL in production)
+> Single-file storage simplifies deployment
 
-Queue Implementation
-In-Memory Queue:
+Trade-off: Not ideal for distributed systems (We could be using PostgreSQL in production)
 
-Uses Python's queue.Queue for simplicity
+### Queue Implementation
+#### In-Memory Queue:
 
-4 worker threads for parallel processing
+> Uses Python's queue.Queue for simplicity
 
-Limitation: Not persistent (use Redis/RabbitMQ in production)
+> 4 worker threads for parallel processing
 
-Thread Safety
-SQLite write-ahead log (WAL) mode ensures thread-safe DB operations
+> Limitation: Not persistent (use Redis/RabbitMQ in production)
 
-Scalability
-Worker Threads: Configurable via num_workers in QueueManager
+#### Thread Safety:
+> SQLite write-ahead log (WAL) mode ensures thread-safe DB operations
 
-Concurrency: Flask runs in threaded mode (threaded=True)
+#### Scalability:
+> Worker Threads: Configurable via num_workers in QueueManager
+
+#### Concurrency: Flask runs in threaded mode (threaded=True)
 
 Database Schema 🔍
 ```sql
@@ -181,12 +173,10 @@ completed_at: Order completion time
 Simulate 1,000 concurrent orders:
 
 ```bash
-Copy
 ./load_test.sh
 Sample Script (load_test.sh):
 ```
 ```bash
-Copy
 #!/bin/bash
 for i in {1..1000}; do
   curl -X POST http://localhost:5000/orders \
