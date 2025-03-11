@@ -91,8 +91,8 @@ json
 2. Check Order Status
 ```bash
 curl http://localhost:5000/orders/order_456/status
+```
 Response:
-
 json
 ```
 {
